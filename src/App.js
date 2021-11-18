@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import Title from './components/Title';
+import Search from './components/Search';
+
 const App = () => {
   const photoURL = 'https://jsonplaceholder.typicode.com/photos';
+  const headerTitle = '다찾아 이미지검색';
   const [allPhoto, setAllPhoto] = useState([]);
   const [searchPhoto, setSearchPhoto] = useState([]);
   useEffect(() => {
@@ -18,7 +22,12 @@ const App = () => {
     };
     fetchData();
   }, []);
-  return <div>Hello world</div>;
+  return (
+    <div className="container">
+      <Title title={headerTitle} />
+      <Search />
+    </div>
+  );
 };
 
 export default App;
