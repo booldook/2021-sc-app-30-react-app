@@ -5,7 +5,6 @@ const Search = ({ changeQuery }) => {
   const placeholder = '이미지 검색';
   const queryRef = useRef(null);
   const [query, setQuery] = useState('');
-
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -14,19 +13,23 @@ const Search = ({ changeQuery }) => {
     [changeQuery, queryRef]
   );
 
-  const onChange = useCallback((e) => {
-    setQuery(e.target.value);
-  }, []);
+  const onChange = useCallback(
+    (e) => {
+      setQuery(e.target.value);
+    },
+    [setQuery]
+  );
 
   const onClick = useCallback(
     (e) => {
       setQuery('');
       changeQuery('');
-      queryRef.current.focus();
     },
-    [changeQuery]
+    [setQuery, changeQuery]
   );
-
+  /* useEffect(() => {
+    changeQuery(query);
+  }, [query]); */
   return (
     <form className="search-wrapper" onSubmit={onSubmit}>
       <div className="search-wrap">
