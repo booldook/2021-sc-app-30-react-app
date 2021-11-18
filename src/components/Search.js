@@ -1,21 +1,32 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import '../scss/Search.scss';
 
 const Search = ({ changeQuery }) => {
   const placeholder = '이미지 검색';
   const queryRef = useRef(null);
   const [query, setQuery] = useState('');
-  const onSubmit = (e) => {
-    e.preventDefault();
-    changeQuery(queryRef.current.value);
-  };
-  const onChange = (e) => {
-    setQuery(e.target.value);
-  };
-  const onClick = (e) => {
-    setQuery('');
-    changeQuery('');
-  };
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      changeQuery(queryRef.current.value);
+    },
+    [changeQuery, queryRef]
+  );
+
+  const onChange = useCallback(
+    (e) => {
+      setQuery(e.target.value);
+    },
+    [setQuery]
+  );
+
+  const onClick = useCallback(
+    (e) => {
+      setQuery('');
+      changeQuery('');
+    },
+    [setQuery, changeQuery]
+  );
   /* useEffect(() => {
     changeQuery(query);
   }, [query]); */
@@ -42,4 +53,4 @@ const Search = ({ changeQuery }) => {
   );
 };
 
-export default Search;
+export default React.memo(Search);
