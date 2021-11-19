@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
 
-const font = {
+export default styled;
+
+export const font = {
   noto: `'Noto Sans KR', sans-serif`,
   notoSf: `'Noto Serif KR', serif`,
 };
 
-const color = {
+export const color = {
   info: '#88E0EF',
   dark: '#161E54',
   danger: '#FF5151',
@@ -16,7 +18,7 @@ const color = {
   primary: '#396EB0',
 };
 
-const size = {
+export const size = {
   xl: '1399px',
   lg: '1199px',
   md: '991px',
@@ -24,7 +26,7 @@ const size = {
   xs: '575px',
 };
 
-const media = {
+export const media = {
   xl: ` (max-width: ${size.xl})`,
   lg: ` (max-width: ${size.lg})`,
   md: ` (max-width: ${size.md})`,
@@ -32,7 +34,7 @@ const media = {
   xs: ` (max-width: ${size.xs})`,
 };
 
-const flex = (h = 'flex-start', v = 'stretch', w = 'nowrap') => {
+export const flex = ({ w, h, v }) => {
   return css`
     display: flex;
     flex-wrap: ${w};
@@ -40,5 +42,3 @@ const flex = (h = 'flex-start', v = 'stretch', w = 'nowrap') => {
     align-items: ${v};
   `;
 };
-
-export { styled, font, color, size, media, flex };
