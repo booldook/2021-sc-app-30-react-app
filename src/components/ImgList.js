@@ -2,19 +2,20 @@ import React from 'react';
 import styled, { flex, color, media, size } from '../style';
 
 const List = styled.li`
-  width: 19%;
+  width: 11.5%;
   margin-right: 1%;
+  margin-bottom: 1%;
   @media ${media.lg} {
-    width: 24%;
+    width: 13.2857%;
   }
   @media ${media.md} {
-    width: 32.3333%;
+    width: 15.6667%;
   }
   @media ${media.sm} {
-    width: 49%;
+    width: 19%;
   }
   @media ${media.xs} {
-    width: 99%;
+    width: 24%;
   }
 `;
 
