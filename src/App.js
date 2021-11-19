@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import axios from 'axios';
 
-import Title from './components/Title';
-import Search from './components/Search';
-import Lists from './components/Lists';
+import MainTitle from './components/MainTitle';
+import MainSearch from './components/MainSearch';
+import ImgLists from './components/ImgLists';
 
 const kakaoKey = 'KakaoAK f17d0ae4d1d2ec94f5d272fd59b55b7f';
 const kakaoURL = 'https://dapi.kakao.com/v2/search/image';
@@ -31,9 +31,9 @@ const App = () => {
 
   return (
     <div className="container">
-      <Title title={headerTitle} subTitle={subTitle} />
-      <Search changeQuery={changeQuery} />
-      <Lists lists={searchPhoto} />
+      <MainTitle title={headerTitle} subTitle={subTitle} />
+      <MainSearch changeQuery={changeQuery} />
+      <ImgLists lists={searchPhoto} />
     </div>
   );
 };
