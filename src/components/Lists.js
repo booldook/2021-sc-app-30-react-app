@@ -1,12 +1,13 @@
 import React, { useCallback } from 'react';
+import { styled, color, size, font, media, flex } from '../style';
+
+import List from './List';
 
 const Lists = ({ lists }) => {
   return (
     <ul>
       {lists.map((v, i) => (
-        <li key={i}>
-          <img src={v.thumbnail_url} className="w-100" alt="" />
-        </li>
+        <List list={v} key={i} />
       ))}
     </ul>
   );
