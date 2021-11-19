@@ -23,7 +23,7 @@ const InViewStyled = styled(InView)`
 `;
 
 const App = () => {
-  const [isEnd, setisEnd] = useState(false);
+  const [isEnd, setIsEnd] = useState(false);
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [searchPhoto, setSearchPhoto] = useState([]);
@@ -31,16 +31,19 @@ const App = () => {
   const changeQuery = useCallback(
     async (value) => {
       try {
-        setQuery(value);
-        kakaoParams.params.query = value;
-        kakaoParams.params.page = page;
-        const { data } = await axios.get(kakaoURL, kakaoParams);
-        setSearchPhoto([...searchPhoto, ...data.documents]);
+        if (page && value && !isEnd) {
+          setQuery(value);
+          kakaoParams.params.query = value;
+          kakaoParams.params.page = page;
+          const { data } = await axios.get(kakaoURL, kakaoParams);
+          setIsEnd(data.meta.is_end);
+          setSearchPhoto([...searchPhoto, ...data.documents]);
+        }
       } catch (err) {
         console.log(err);
       }
     },
-    [page, searchPhoto]
+    [page, searchPhoto, isEnd]
   );
 
   const onChange = useCallback(
